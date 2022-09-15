@@ -1,13 +1,12 @@
-import 'package:flui/src/widgets/persistent_header.dart';
 import 'package:flutter/material.dart';
+
+import '../../../flui_nullsafety.dart';
 
 class FLPersistentHeaderConstraints extends BoxConstraints {
   FLPersistentHeaderConstraints({
-    this.state,
-    BoxConstraints boxConstraints,
-  })  : assert(state != null),
-        assert(boxConstraints != null),
-        super(
+    required this.state,
+    required BoxConstraints boxConstraints,
+  })  : super(
           minWidth: boxConstraints.minWidth,
           maxWidth: boxConstraints.maxWidth,
           minHeight: boxConstraints.minHeight,
@@ -39,6 +38,6 @@ class FLPersistentHeaderConstraints extends BoxConstraints {
   @override
   int get hashCode {
     assert(debugAssertIsValid());
-    return hashValues(minWidth, maxWidth, minHeight, maxHeight, state);
+    return Object.hash(minWidth, maxWidth, minHeight, maxHeight, state);
   }
 }
